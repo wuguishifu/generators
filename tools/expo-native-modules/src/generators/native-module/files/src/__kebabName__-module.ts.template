@@ -1,3 +1,7 @@
-import { requireNativeModule } from 'expo-modules-core';
+import { NativeModule, requireNativeModule, } from 'expo';
+
+export interface <%= className %>Module extends NativeModule<{}> {
+  hello(): string;
+}
 
 export const <%= className %>Module = requireNativeModule('<%= className %>Module');
