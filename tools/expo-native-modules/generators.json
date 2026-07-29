@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "native-module": {
+      "factory": "./dist/generators/native-module/native-module",
+      "schema": "./dist/generators/native-module/schema.json",
+      "description": "Generate a new Expo native module"
+    }
+  }
+}
