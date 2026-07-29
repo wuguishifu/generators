@@ -21,7 +21,8 @@ export default async function nativeModuleGenerator(
   options: NativeModuleGeneratorSchema,
 ) {
   const projectRoot = options.directory;
-  const name = options.name ?? path.basename(options.directory);
+  const projectName = path.basename(projectRoot);
+  const name = options.name ?? projectName;
   const androidNamespace = options.androidNamespace ?? 'com.example';
 
   const tasks: GeneratorCallback[] = [];
@@ -34,6 +35,8 @@ export default async function nativeModuleGenerator(
   const className = toClassName(name);
 
   const replacements = {
+    projectRoot,
+    projectName,
     kebabName,
     className,
     summary: options.summary,
