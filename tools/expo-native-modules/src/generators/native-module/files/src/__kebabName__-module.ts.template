@@ -4,4 +4,4 @@ export interface <%= className %>Module extends NativeModule<{}> {
   hello(): string;
 }
 
-export const <%= className %>Module = requireNativeModule('<%= className %>Module');
+export const <%= className %>Module = requireNativeModule('<%= className %>');

@@ -30,10 +30,26 @@
       "description": "The library name used to import it, like @myorg/my-native-module. Required for publishable library.",
       "x-priority": "important"
     },
+    "homepage": {
+      "type": "string",
+      "description": "The URL of the homepage. For example, `https://docs.expo.dev/modules/.`"
+    },
+    "description": {
+      "type": "string",
+      "description": "Summary of the module"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Summary of the module"
+    },
+    "author": {
+      "type": "string",
+      "description": "Summary of the module"
+    },
     "useProjectJson": {
       "type": "boolean",
       "description": "Use `project.json` configuration file instead of inlining the Nx configuration in the `package.json` file."
     }
   },
-  "required": ["directory"]
+  "required": ["directory", "homepage"]
 }

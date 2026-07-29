@@ -31,6 +31,10 @@ export default async function nativeModuleGenerator(
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
     kebabName,
     className,
+    summary: options.summary,
+    description: options.description,
+    author: options.author,
+    homepage: options.homepage,
   });
 
   await formatFiles(tree);

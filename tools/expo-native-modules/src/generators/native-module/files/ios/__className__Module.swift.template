@@ -1,0 +1,14 @@
+import ExpoModulesCore
+
+public class <%= className %>Module: Module {
+  public func definition() -> ModuleDefinition {
+    Name("<%= className %>")
+
+    Function("hello") {
+      return "Hello world! 👋"
+    }
+
+    View(<%= className %>View.self) {
+    }
+  }
+}
