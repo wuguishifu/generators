@@ -27,7 +27,7 @@ export function addProjectDependencies(
         },
         {
           '@nx/react': nxVersion,
-          '@nx/expo': expoVersion,
+          '@nx/expo': nxVersion,
           '@types/node': typesNodeVersion,
           '@expo/cli': expoCliVersion,
           'metro-config': metroVersion,
