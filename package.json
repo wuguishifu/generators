@@ -2,7 +2,9 @@
   "name": "@org/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "test": "nx build expo-native-modules && nx g native-module test/bo"
+  },
   "private": true,
   "devDependencies": {
     "@eslint/js": "^9.8.0",
