@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "test": "nx build expo-native-modules && nx g native-module test/bo --homepage=\"https://github.com/wuguishifu/generators\""
+    "test": "nx build expo-native-modules && nx g native-module test/bo --homepage=\"https://github.com/wuguishifu/generators\" --androidNamespace=\"com.wuguishifu.bo\""
   },
   "private": true,
   "devDependencies": {

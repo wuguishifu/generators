@@ -12,4 +12,5 @@ export interface NativeModuleGeneratorSchema {
   homepage: string;
 
   // android module properties
+  androidNamespace?: string;
 }

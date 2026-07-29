@@ -9,7 +9,12 @@ import * as path from 'path';
 import type { NativeModuleGeneratorSchema } from './schema';
 import { addProjectDependencies } from './utils/add-project-deps';
 import { initRootBabelConfig } from './utils/init-root-babel-config';
-import { toClassName, toKebabCase } from './utils/naming';
+import {
+  toAndroidNamespace,
+  toClassName,
+  toKebabCase,
+  toNamespacePath,
+} from './utils/naming';
 
 export default async function nativeModuleGenerator(
   tree: Tree,
@@ -17,7 +22,7 @@ export default async function nativeModuleGenerator(
 ) {
   const projectRoot = options.directory;
   const name = options.name ?? path.basename(options.directory);
-  console.log({ projectRoot, name });
+  const androidNamespace = options.androidNamespace ?? 'com.example';
 
   const tasks: GeneratorCallback[] = [];
 
@@ -28,14 +33,18 @@ export default async function nativeModuleGenerator(
   const kebabName = toKebabCase(name);
   const className = toClassName(name);
 
-  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
+  const replacements = {
     kebabName,
     className,
     summary: options.summary,
     description: options.description,
     author: options.author,
     homepage: options.homepage,
-  });
+    androidNamespace: toAndroidNamespace(androidNamespace, name),
+    androidNamespacePath: toNamespacePath(androidNamespace, name),
+  };
+
+  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, replacements);
 
   await formatFiles(tree);
 

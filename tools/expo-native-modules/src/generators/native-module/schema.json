@@ -46,6 +46,10 @@
       "type": "string",
       "description": "Summary of the module"
     },
+    "androidNamespace": {
+      "type": "string",
+      "description": "The namespace in which to put your module on Android. For example, `dev.expo.mynativemodule`."
+    },
     "useProjectJson": {
       "type": "boolean",
       "description": "Use `project.json` configuration file instead of inlining the Nx configuration in the `package.json` file."
