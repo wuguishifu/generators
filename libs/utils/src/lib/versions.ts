@@ -4,6 +4,7 @@ export const typesNodeVersion = '^22.0.0';
 // expo
 export const expoVersion = '~56.0.0';
 export const expoCliVersion = '~56.1.14'; // @expo/cli
+export const expoModulesCoreVersion = '~56.0.22';
 export const babelPresetExpoVersion = '~56.0.14';
 export const expoMetroVersion = '~56.0.0'; // @expo/metro (SDK 55+ Metro)
 export const metroConfigVersion = '~56.0.13'; // @expo/metro-config

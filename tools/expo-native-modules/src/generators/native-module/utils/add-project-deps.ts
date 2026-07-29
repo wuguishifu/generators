@@ -1,6 +1,7 @@
 import { addDependenciesToPackageJson, Tree } from '@nx/devkit';
 import {
   expoCliVersion,
+  expoModulesCoreVersion,
   expoVersion,
   metroVersion,
   nxVersion,
@@ -24,6 +25,7 @@ export function addProjectDependencies(
           'react-dom': reactDomVersion,
           'react-native': reactNativeVersion,
           expo: expoVersion,
+          'expo-modules-core': expoModulesCoreVersion,
         },
         {
           '@nx/react': nxVersion,

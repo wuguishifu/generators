@@ -15,7 +15,7 @@
     },
     "name": {
       "type": "string",
-      "description": "The name of the module.",
+      "description": "The name of the module. `Module` will be appended to the end of this. For example, `HelloWorld` -> `HelloWorldModule`.",
       "x-priority": "important"
     },
     "bundler": {

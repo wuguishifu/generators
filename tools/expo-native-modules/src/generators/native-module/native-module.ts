@@ -9,6 +9,7 @@ import * as path from 'path';
 import type { NativeModuleGeneratorSchema } from './schema';
 import { addProjectDependencies } from './utils/add-project-deps';
 import { initRootBabelConfig } from './utils/init-root-babel-config';
+import { toClassName, toKebabCase } from './utils/naming';
 
 export default async function nativeModuleGenerator(
   tree: Tree,
@@ -24,7 +25,13 @@ export default async function nativeModuleGenerator(
 
   initRootBabelConfig(tree);
 
-  generateFiles(tree, path.join(__dirname, 'files/src'), projectRoot, {});
+  const kebabName = toKebabCase(name);
+  const className = toClassName(name);
+
+  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
+    kebabName,
+    className,
+  });
 
   await formatFiles(tree);
 
