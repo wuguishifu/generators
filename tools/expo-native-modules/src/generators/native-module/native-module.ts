@@ -1,11 +1,7 @@
-import {
-  addProjectConfiguration,
-  formatFiles,
-  generateFiles,
-  type Tree,
-} from '@nx/devkit';
+import { formatFiles, type Tree } from '@nx/devkit';
 import * as path from 'path';
 import type { NativeModuleGeneratorSchema } from './schema';
+import { addProjectDependencies } from './utils/add-project-deps';
 
 export default async function nativeModuleGenerator(
   tree: Tree,
@@ -13,12 +9,9 @@ export default async function nativeModuleGenerator(
 ) {
   const projectRoot = options.directory;
   const name = options.name ?? path.basename(options.directory);
-  addProjectConfiguration(tree, name, {
-    root: projectRoot,
-    projectType: 'library',
-    sourceRoot: `${projectRoot}/src`,
-    targets: {},
-  });
-  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
+  console.log({ projectRoot, name });
+
+  addProjectDependencies(tree, options);
+
   await formatFiles(tree);
 }

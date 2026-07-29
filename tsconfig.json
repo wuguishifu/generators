@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./tools/expo-native-modules"
+    },
+    {
+      "path": "./libs/utils"
     }
   ],
   "compilerOptions": {}

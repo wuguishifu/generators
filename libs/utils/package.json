@@ -1,5 +1,5 @@
 {
-  "name": "@wuguishifu/expo-native-modules",
+  "name": "@root/utils",
   "version": "0.0.1",
   "private": true,
   "type": "commonjs",
@@ -15,15 +15,5 @@
       "default": "./dist/index.js"
     }
   },
-  "dependencies": {
-    "@root/utils": "workspace:*",
-    "@nx/devkit": "23.1.0",
-    "tslib": "^2.3.0"
-  },
-  "generators": "./generators.json",
-  "files": [
-    "dist",
-    "!**/*.tsbuildinfo",
-    "generators.json"
-  ]
+  "dependencies": {}
 }
