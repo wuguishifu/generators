@@ -1,5 +1,5 @@
 {
-  "name": "@wuguishifu/nx-expo-native-modules",
+  "name": "@wuguishifu/expo-native-modules",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "tools/expo-native-modules/src",
   "projectType": "library",

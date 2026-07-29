@@ -1,5 +1,5 @@
 {
-  "name": "@wuguishifu/nx-expo-native-modules",
+  "name": "@wuguishifu/expo-native-modules",
   "version": "0.0.1",
   "private": true,
   "type": "commonjs",

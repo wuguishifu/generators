@@ -7,12 +7,13 @@ import {
 import * as path from 'path';
 import type { NativeModuleGeneratorSchema } from './schema';
 
-export async function nativeModuleGenerator(
+export default async function nativeModuleGenerator(
   tree: Tree,
   options: NativeModuleGeneratorSchema,
 ) {
-  const projectRoot = `libs/${options.name}`;
-  addProjectConfiguration(tree, options.name, {
+  const projectRoot = options.directory;
+  const name = options.name ?? path.basename(options.directory);
+  addProjectConfiguration(tree, name, {
     root: projectRoot,
     projectType: 'library',
     sourceRoot: `${projectRoot}/src`,
@@ -21,5 +22,3 @@ export async function nativeModuleGenerator(
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
   await formatFiles(tree);
 }
-
-export default nativeModuleGenerator;
