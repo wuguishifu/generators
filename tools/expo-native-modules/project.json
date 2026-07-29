@@ -1,0 +1,32 @@
+{
+  "name": "@wuguishifu/nx-expo-native-modules",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/expo-native-modules/src",
+  "projectType": "library",
+  "tags": ["scope:tool"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "tools/expo-native-modules/dist",
+        "main": "tools/expo-native-modules/src/index.ts",
+        "tsConfig": "tools/expo-native-modules/tsconfig.lib.json",
+        "rootDir": "tools/expo-native-modules/src",
+        "generatePackageJson": false,
+        "assets": [
+          {
+            "input": "./tools/expo-native-modules/src",
+            "glob": "**/!(*.ts)",
+            "output": "."
+          },
+          {
+            "input": "./tools/expo-native-modules/src",
+            "glob": "**/*.d.ts",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

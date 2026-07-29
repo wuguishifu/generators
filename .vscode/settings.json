@@ -4,5 +4,6 @@
     "source.fixAll.eslint": "always"
   },
   "js/ts.tsdk.path": "node_modules/typescript/lib",
-  "editor.formatOnSave": false
+  "editor.formatOnSave": false,
+  "eslint.validate": ["json"]
 }
