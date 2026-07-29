@@ -1,6 +1,4 @@
-import { join } from 'path';
-
-export const nxVersion = require(join('@nx/js', 'package.json')).version;
+export const nxVersion: string = require('@nx/devkit/package.json').version;
 export const typesNodeVersion = '^22.0.0';
 
 // expo

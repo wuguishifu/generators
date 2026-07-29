@@ -9,6 +9,9 @@ export default [
         'error',
         {
           ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}'],
+          // Bundled into dist by the esbuild build (excludeFromExternal), so it
+          // is intentionally not a runtime dependency of the published package.
+          ignoredDependencies: ['@root/utils'],
         },
       ],
     },
