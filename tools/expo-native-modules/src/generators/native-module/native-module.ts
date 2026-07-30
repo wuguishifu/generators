@@ -2,6 +2,7 @@ import {
   formatFiles,
   generateFiles,
   GeneratorCallback,
+  offsetFromRoot,
   runTasksInSerial,
   type Tree,
 } from '@nx/devkit';
@@ -45,6 +46,9 @@ export default async function nativeModuleGenerator(
     homepage: options.homepage,
     androidNamespace: toAndroidNamespace(androidNamespace, name),
     androidNamespacePath: toNamespacePath(androidNamespace, name),
+    offsetFromRoot: offsetFromRoot(projectRoot),
+    buildable: options.bundler && options.bundler !== 'none',
+    emitDeclarationOnly: options.bundler === 'tsc' ? false : true,
   };
 
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, replacements);

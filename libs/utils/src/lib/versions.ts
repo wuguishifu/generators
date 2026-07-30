@@ -1,5 +1,6 @@
 export const nxVersion: string = require('@nx/devkit/package.json').version;
 export const typesNodeVersion = '^22.0.0';
+export const tsLibVersion = '^2.3.0';
 
 // expo
 export const expoVersion = '~56.0.0';

@@ -7,6 +7,7 @@ import {
   reactDomVersion,
   reactNativeVersion,
   reactVersion,
+  tsLibVersion,
   typesNodeVersion,
 } from '@root/utils';
 import { NativeModuleGeneratorSchema } from '../schema';
@@ -32,6 +33,7 @@ export function addProjectDependencies(
           '@expo/cli': expoCliVersion,
           'metro-config': metroVersion,
           'metro-resolver': metroVersion,
+          tslib: tsLibVersion,
         },
         undefined,
         true,
