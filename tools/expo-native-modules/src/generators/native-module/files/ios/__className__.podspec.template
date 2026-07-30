@@ -1,14 +1,10 @@
-require 'json'
-
-package = JSON.parse(File.read(File.join(__dir__, '..', 'package.json')))
-
 Pod::Spec.new do |s|
   s.name           = '<%= className %>'
-  s.version        = package['version']
-  s.summary        = package['description']
-  s.description    = package['description']
-  s.author         = package['author']
-  s.homepage       = package['homepage']
+  s.version        = '0.0.1'
+  s.summary        = '<%= description %>'
+  s.description    = '<%= description %>'
+  s.author         = '<%= author %>'
+  s.homepage       = '<%= homepage %>'
   s.platforms      = {
     :ios => '16.4',
     :tvos => '16.4'
