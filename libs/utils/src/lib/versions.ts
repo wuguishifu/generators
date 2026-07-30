@@ -15,3 +15,23 @@ export const reactDomVersion = '^19.2.0';
 export const typesReactVersion = '^19.2.0';
 export const reactNativeVersion = '0.85.3';
 export const metroVersion = '~0.84.3';
+export const typescriptVersion = '^6.0.3';
+
+export const versions = {
+  nxVersion,
+  typesNodeVersion,
+  tsLibVersion,
+  expoVersion,
+  expoCliVersion,
+  expoModulesCoreVersion,
+  babelPresetExpoVersion,
+  expoMetroVersion,
+  metroConfigVersion,
+  metroRuntimeVersion,
+  reactVersion,
+  reactDomVersion,
+  typesReactVersion,
+  reactNativeVersion,
+  metroVersion,
+  typescriptVersion,
+};

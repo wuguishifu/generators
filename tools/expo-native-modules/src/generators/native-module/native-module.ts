@@ -6,9 +6,11 @@ import {
   runTasksInSerial,
   type Tree,
 } from '@nx/devkit';
+import { versions } from '@root/utils';
 import * as path from 'path';
 import type { NativeModuleGeneratorSchema } from './schema';
 import { addProjectDependencies } from './utils/add-project-deps';
+import { getJsonFile } from './utils/file-parser';
 import { initRootBabelConfig } from './utils/init-root-babel-config';
 import {
   toAndroidNamespace,
@@ -35,6 +37,9 @@ export default async function nativeModuleGenerator(
   const kebabName = toKebabCase(name);
   const className = toClassName(name);
 
+  const baseTsConfig = getJsonFile(tree, 'tsconfig.base.json');
+  const customCondition = baseTsConfig.compilerOptions?.customConditions?.[0];
+
   const replacements = {
     projectRoot,
     projectName,
@@ -49,6 +54,8 @@ export default async function nativeModuleGenerator(
     offsetFromRoot: offsetFromRoot(projectRoot),
     buildable: options.bundler && options.bundler !== 'none',
     emitDeclarationOnly: options.bundler === 'tsc' ? false : true,
+    customCondition,
+    ...versions,
   };
 
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, replacements);
