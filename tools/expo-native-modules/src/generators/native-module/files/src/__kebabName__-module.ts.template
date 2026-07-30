@@ -1,0 +1,7 @@
+import { NativeModule, requireNativeModule, } from 'expo';
+
+export interface <%= className %>Module extends NativeModule<{}> {
+  hello(): string;
+}
+
+export const <%= className[0].toLowerCase() + className.slice(1) %>Module = requireNativeModule<<%= className %>Module>('<%= className %>');

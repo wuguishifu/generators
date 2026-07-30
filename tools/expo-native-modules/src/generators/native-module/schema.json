@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "NativeModule",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "directory": {
+      "type": "string",
+      "description": "A directory in which the module is added.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Which directory do you want to create the module in?"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the module. `Module` will be appended to the end of this. For example, `HelloWorld` -> `HelloWorldModule`.",
+      "x-priority": "important"
+    },
+    "bundler": {
+      "type": "string",
+      "description": "The bundler to use. Choosing 'none' means this library is not buildable.",
+      "enum": ["tsc", "none"],
+      "default": "tsc",
+      "x-priority": "important"
+    },
+    "importPath": {
+      "type": "string",
+      "description": "The library name used to import it, like @myorg/my-native-module. Required for publishable library.",
+      "x-priority": "important"
+    },
+    "homepage": {
+      "type": "string",
+      "description": "The URL of the homepage. For example, `https://docs.expo.dev/modules/.`",
+      "x-priority": "important"
+    },
+    "description": {
+      "type": "string",
+      "description": "Summary of the module"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Summary of the module"
+    },
+    "author": {
+      "type": "string",
+      "description": "Summary of the module"
+    },
+    "androidNamespace": {
+      "type": "string",
+      "description": "The namespace in which to put your module on Android. For example, `dev.expo.mynativemodule`."
+    },
+    "useProjectJson": {
+      "type": "boolean",
+      "description": "Use `project.json` configuration file instead of inlining the Nx configuration in the `package.json` file."
+    }
+  },
+  "required": ["directory"]
+}

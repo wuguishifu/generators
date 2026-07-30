@@ -1,0 +1,2 @@
+export * from './<%= kebabName %>-module';
+export * from './<%= kebabName %>-view';

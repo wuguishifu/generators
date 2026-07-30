@@ -1,0 +1,45 @@
+{
+  "name": "@wuguishifu/expo-native-modules",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/expo-native-modules/src",
+  "projectType": "library",
+  "tags": ["scope:tool"],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^build"],
+      "options": {
+        "outputPath": "tools/expo-native-modules/dist",
+        "main": "tools/expo-native-modules/src/index.ts",
+        "additionalEntryPoints": [
+          "tools/expo-native-modules/src/generators/native-module/native-module.ts"
+        ],
+        "tsConfig": "tools/expo-native-modules/tsconfig.lib.json",
+        "platform": "node",
+        "format": ["cjs"],
+        "bundle": true,
+        "excludeFromExternal": ["@root/utils"],
+        "declaration": true,
+        "declarationRootDir": "tools/expo-native-modules/src",
+        "generatePackageJson": false,
+        "esbuildOptions": {
+          "outExtension": { ".js": ".js" },
+          "conditions": ["@org/source"]
+        },
+        "assets": [
+          {
+            "input": "./tools/expo-native-modules/src",
+            "glob": "**/!(*.ts)",
+            "output": "."
+          },
+          {
+            "input": "./tools/expo-native-modules/src",
+            "glob": "**/*.d.ts",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+import ExpoModulesCore
+
+class <%= className %>View: ExpoView {
+  let label = UILabel()
+
+  required init(appContext: AppContext? = nil) {
+    super.init(appContext: appContext)
+    clipsToBounds = true
+    backgroundColor = UIColor(red: 0.67, green: 0.73, blue: 0.80, alpha: 1.0)
+    label.text = "<%= className %> - native view"
+    label.textAlignment = .center
+    label.numberOfLines = 0
+    label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    addSubview(label)
+  }
+}

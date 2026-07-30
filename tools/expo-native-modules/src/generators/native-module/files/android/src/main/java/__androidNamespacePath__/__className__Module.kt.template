@@ -1,0 +1,17 @@
+package <%= androidNamespace %>
+
+import expo.modules.kotlin.modules.Module
+import expo.modules.kotlin.modules.ModuleDefinition
+
+class <%= className %>Module : Module() {
+  override fun definition() = ModuleDefinition {
+    Name("<%= className %>")
+
+    Function("hello") {
+      "Hello world! 👋"
+    }
+
+    View(<%= className %>View::class) {
+    }
+  }
+}
