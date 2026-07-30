@@ -32,7 +32,8 @@
     },
     "homepage": {
       "type": "string",
-      "description": "The URL of the homepage. For example, `https://docs.expo.dev/modules/.`"
+      "description": "The URL of the homepage. For example, `https://docs.expo.dev/modules/.`",
+      "x-priority": "important"
     },
     "description": {
       "type": "string",
@@ -55,5 +56,5 @@
       "description": "Use `project.json` configuration file instead of inlining the Nx configuration in the `package.json` file."
     }
   },
-  "required": ["directory", "homepage"]
+  "required": ["directory"]
 }

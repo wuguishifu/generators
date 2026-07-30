@@ -43,7 +43,7 @@ export default async function nativeModuleGenerator(
     summary: options.summary,
     description: options.description,
     author: options.author,
-    homepage: options.homepage,
+    homepage: options.homepage ?? 'https://github.com/wuguishifu/generators',
     androidNamespace: toAndroidNamespace(androidNamespace, name),
     androidNamespacePath: toNamespacePath(androidNamespace, name),
     offsetFromRoot: offsetFromRoot(projectRoot),

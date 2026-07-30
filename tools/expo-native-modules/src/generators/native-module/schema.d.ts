@@ -9,7 +9,7 @@ export interface NativeModuleGeneratorSchema {
   summary?: string;
   description?: string;
   author?: string;
-  homepage: string;
+  homepage?: string;
 
   // android module properties
   androidNamespace?: string;
