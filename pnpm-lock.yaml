@@ -77,7 +77,7 @@ importers:
 
   libs/utils: {}
 
-  tools/expo-native-modules:
+  tools/nx-expo-native-modules:
     dependencies:
       '@nx/devkit':
         specifier: 23.1.0

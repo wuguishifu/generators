@@ -4,10 +4,10 @@
   "files": [],
   "references": [
     {
-      "path": "./tools/expo-native-modules"
+      "path": "./libs/utils"
     },
     {
-      "path": "./libs/utils"
+      "path": "./tools/nx-expo-native-modules"
     }
   ],
   "compilerOptions": {}
