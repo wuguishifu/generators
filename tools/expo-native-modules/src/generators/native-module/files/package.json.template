@@ -1,5 +1,5 @@
 {
-  "name": "<%= projectName %>",
+  "name": "<%= importPath %>",
   "version": "0.0.1",
   "private": true,<% if (buildable) { %>
   "type": "commonjs",

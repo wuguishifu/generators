@@ -40,11 +40,22 @@ export default async function nativeModuleGenerator(
   const baseTsConfig = getJsonFile(tree, 'tsconfig.base.json');
   const customCondition = baseTsConfig.compilerOptions?.customConditions?.[0];
 
+  const rootTsConfig = getJsonFile(tree, 'tsconfig.json');
+  const references: { path: string }[] = rootTsConfig.references ?? [];
+  if (!references.some(({ path }) => path === projectRoot)) {
+    references.push({ path: `./${projectRoot}` });
+  }
+  tree.write(
+    'tsconfig.json',
+    JSON.stringify({ ...rootTsConfig, references }, null, 2),
+  );
+
   const replacements = {
     projectRoot,
     projectName,
     kebabName,
     className,
+    importPath: options.importPath ?? name,
     summary: options.summary ?? 'A summary',
     description: options.description ?? 'A description',
     author: options.author,
