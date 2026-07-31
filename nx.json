@@ -33,6 +33,19 @@
   ],
   "neverConnectToCloud": true,
   "analytics": false,
+  "release": {
+    "projects": ["@wuguishifu/*"],
+    "projectsRelationship": "independent",
+    "version": {
+      "preVersionCommand": "npx nx run-many -t build"
+    },
+    "changelog": {
+      "workspaceChangelog": false,
+      "projectChangelogs": {
+        "createRelease": "github"
+      }
+    }
+  },
   "targetDefaults": {
     "@nx/js:tsc": {
       "cache": true,

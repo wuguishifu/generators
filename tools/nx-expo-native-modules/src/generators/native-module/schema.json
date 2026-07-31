@@ -1,7 +1,8 @@
 {
   "$schema": "https://json-schema.org/schema",
   "$id": "NativeModule",
-  "title": "",
+  "title": "Create an Expo native module",
+  "description": "Scaffold an Expo native module with Swift (Apple) and Kotlin (Android) implementations plus a TypeScript surface.",
   "type": "object",
   "properties": {
     "directory": {
@@ -15,7 +16,7 @@
     },
     "name": {
       "type": "string",
-      "description": "The name of the module. `Module` will be appended to the end of this. For example, `HelloWorld` -> `HelloWorldModule`.",
+      "description": "The name of the module, as separate words joined by `-`, `_`, or spaces. `Module` is appended to the generated class name. For example, `hello-world` -> `HelloWorldModule`. Defaults to the last segment of `directory`.",
       "x-priority": "important"
     },
     "bundler": {
@@ -37,15 +38,15 @@
     },
     "description": {
       "type": "string",
-      "description": "Summary of the module"
+      "description": "A longer description of the module, used for the iOS podspec."
     },
     "summary": {
       "type": "string",
-      "description": "Summary of the module"
+      "description": "A one-line summary of the module."
     },
     "author": {
       "type": "string",
-      "description": "Summary of the module"
+      "description": "The author of the module, used for the iOS podspec."
     },
     "androidNamespace": {
       "type": "string",
