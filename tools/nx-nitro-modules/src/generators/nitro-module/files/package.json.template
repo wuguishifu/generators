@@ -27,14 +27,9 @@
   <% } %>},
   "devDependencies": {
     "@types/react": "*",
-    "babel-preset-expo": "*",
-    "expo": "*",
-    "react-native": "*",
-    "typescript": "*"
+    "react-native": "*"
   },
   "peerDependencies": {
-    "expo": "*",
-    "react": "*",
-    "react-native": "*"
+    "react-native-nitro-modules": "*"
   }
 }

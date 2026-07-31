@@ -1,3 +1,15 @@
 export interface NitroModuleGeneratorSchema {
-  name: string;
+  directory: string;
+  name?: string;
+  bundler: 'tsc' | 'none';
+  importPath?: string;
+
+  // ios module properties
+  summary?: string;
+  description?: string;
+  author?: string;
+  homepage?: string;
+
+  // android module properties
+  androidNamespace?: string;
 }

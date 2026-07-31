@@ -1,0 +1,24 @@
+{
+  "%schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": ["<%= cxxName %>"],
+  "ios": {
+    "iosModuleName": "<%= className %>"
+  },
+  "android": {
+    "androidNamespace": ["<%= cxxName %>"],
+    "androidCxxLibName": "<%= cxxName %>"
+  },
+  "autolinking": {
+    "<%= className %>": {
+      "ios": {
+        "language": "swift",
+        "implementationClassName": "<%= className %>"
+      },
+      "android": {
+        "language": "kotlin",
+        "implementationClassName": "<%= className %>"
+      }
+    }
+  },
+  "ignorePaths": ["**/node_modules"]
+}

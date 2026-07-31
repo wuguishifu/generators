@@ -6,18 +6,18 @@ import {
   runTasksInSerial,
   type Tree,
 } from '@nx/devkit';
-import { versions } from '@root/utils';
-import * as path from 'path';
-import type { NativeModuleGeneratorSchema } from './schema';
-import { addProjectDependencies } from './utils/add-project-deps';
-import { getJsonFile } from './utils/file-parser';
-import { initRootBabelConfig } from './utils/init-root-babel-config';
 import {
+  getJsonFile,
+  initRootBabelConfig,
   toAndroidNamespace,
   toClassName,
   toKebabCase,
   toNamespacePath,
-} from './utils/naming';
+  versions,
+} from '@root/utils';
+import * as path from 'path';
+import type { NativeModuleGeneratorSchema } from './schema';
+import { addProjectDependencies } from './utils/add-project-deps';
 
 export default async function nativeModuleGenerator(
   tree: Tree,
@@ -60,8 +60,8 @@ export default async function nativeModuleGenerator(
     description: options.description ?? 'A description',
     author: options.author,
     homepage: options.homepage ?? 'https://github.com/wuguishifu/generators',
-    androidNamespace: toAndroidNamespace(androidNamespace, name),
-    androidNamespacePath: toNamespacePath(androidNamespace, name),
+    androidNamespace: toAndroidNamespace(androidNamespace),
+    androidNamespacePath: toNamespacePath(androidNamespace),
     offsetFromRoot: offsetFromRoot(projectRoot),
     buildable: options.bundler && options.bundler !== 'none',
     emitDeclarationOnly: options.bundler === 'tsc' ? false : true,

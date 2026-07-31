@@ -17,6 +17,10 @@ export const reactNativeVersion = '0.85.3';
 export const metroVersion = '~0.84.3';
 export const typescriptVersion = '^6.0.3';
 
+// nitro
+export const nitrogenVersion = '*';
+export const rnNitroModulesVersion = '*';
+
 export const versions = {
   nxVersion,
   typesNodeVersion,

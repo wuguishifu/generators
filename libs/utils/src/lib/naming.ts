@@ -11,13 +11,15 @@ export function toClassName(input: string): string {
   return words.map((word) => word[0].toUpperCase() + word.slice(1)).join('');
 }
 
-export function toAndroidNamespace(namespace: string, name: string): string {
-  if (namespace.split('.').pop() !== name) return `${namespace}.${name}`;
+export function toAndroidNamespace(namespace: string): string {
   return namespace.toLowerCase();
 }
 
-export function toNamespacePath(namespace: string, name: string): string {
+export function toNamespacePath(namespace: string): string {
   const parts = namespace.split('.');
-  if (parts[parts.length - 1] !== name) parts.push(name);
   return parts.join('/').toLowerCase();
+}
+
+export function toCxxNamespace(name: string): string {
+  return name.toLowerCase().replace(/\s|-|_/g, '');
 }

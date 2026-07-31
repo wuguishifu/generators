@@ -1,0 +1,5 @@
+<%= className %>_kotlinVersion=2.1.21
+<%= className %>_minSdkVersion=23
+<%= className %>_targetSdkVersion=36
+<%= className %>_compileSdkVersion=36
+<%= className %>_ndkVersion=29.0.14206865

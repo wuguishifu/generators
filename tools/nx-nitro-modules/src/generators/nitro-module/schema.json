@@ -4,15 +4,53 @@
   "title": "",
   "type": "object",
   "properties": {
-    "name": {
+    "directory": {
       "type": "string",
-      "description": "",
+      "description": "A directory in which the module is added.",
       "$default": {
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What name would you like to use?"
+      "x-prompt": "Which directory do you want to create the module in?"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the module, as separate words joined by `-`, `_`, or spaces. `Module` is appended to the generated class name.",
+      "x-priority": "important"
+    },
+    "bundler": {
+      "type": "string",
+      "description": "The bundler to use. Choosing 'none' means this library is not buildable.",
+      "enum": ["tsc", "none"],
+      "default": "tsc",
+      "x-priority": "important"
+    },
+    "importPath": {
+      "type": "string",
+      "description": "The library name used to import it, like @myorg/my-native-module. Required for publishable library.",
+      "x-priority": "important"
+    },
+    "homepage": {
+      "type": "string",
+      "description": "The URL of the homepage. For example, `https://docs.expo.dev/modules/.`",
+      "x-priority": "important"
+    },
+    "description": {
+      "type": "string",
+      "description": "A longer description of the module, used for the iOS podspec."
+    },
+    "summary": {
+      "type": "string",
+      "description": "A one-line summary of the module."
+    },
+    "author": {
+      "type": "string",
+      "description": "The author of the module, used for the iOS podspec."
+    },
+    "androidNamespace": {
+      "type": "string",
+      "description": "The namespace in which to put your module on Android. For example, `dev.expo.mynativemodule`."
     }
   },
-  "required": ["name"]
+  "required": ["directory"]
 }

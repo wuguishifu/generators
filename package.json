@@ -4,6 +4,7 @@
   "license": "MIT",
   "packageManager": "pnpm@10.2.0",
   "scripts": {
+    "test": "pnpm nx build nx-nitro-modules && pnpm nx generate @wuguishifu/nx-nitro-modules:nitro-module --directory=libs/hello-world --homepage=https://example.com --importPath=@wuguishifu/hello-world --name=\"Hello World\" --androidNamespace=dev.wuguishifu.helloworld --author=\"Bo Bramer\" --description=\"Example module.\" --summary=\"Example module.\" --no-interactive",
     "build": "nx run-many -t build",
     "lint": "nx run-many -t lint",
     "typecheck": "nx run-many -t typecheck",

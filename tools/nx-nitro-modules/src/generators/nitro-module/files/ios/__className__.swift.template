@@ -1,0 +1,8 @@
+import Foundation
+import NitroModules
+
+class <%= className %>: Hybrid<%= className %>Spec {
+  func hello() -> String {
+    return "Hello World"
+  }
+}
