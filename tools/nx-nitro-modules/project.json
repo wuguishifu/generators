@@ -1,0 +1,45 @@
+{
+  "name": "@wuguishifu/nx-nitro-modules",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/nx-nitro-modules/src",
+  "projectType": "library",
+  "tags": ["scope:tool"],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^build"],
+      "options": {
+        "outputPath": "tools/nx-nitro-modules/dist",
+        "main": "tools/nx-nitro-modules/src/index.ts",
+        "additionalEntryPoints": [
+          "tools/nx-nitro-modules/src/generators/nitro-module/nitro-module.ts"
+        ],
+        "tsConfig": "tools/nx-nitro-modules/tsconfig.lib.json",
+        "platform": "node",
+        "format": ["cjs"],
+        "bundle": true,
+        "excludeFromExternal": ["@root/utils"],
+        "declaration": true,
+        "declarationRootDir": "tools/nx-nitro-modules/src",
+        "generatePackageJson": false,
+        "esbuildOptions": {
+          "outExtension": { ".js": ".js" },
+          "conditions": ["@org/source"]
+        },
+        "assets": [
+          {
+            "input": "./tools/nx-nitro-modules/src",
+            "glob": "**/!(*.ts)",
+            "output": "."
+          },
+          {
+            "input": "./tools/nx-nitro-modules/src",
+            "glob": "**/*.d.ts",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

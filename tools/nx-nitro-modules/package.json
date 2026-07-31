@@ -1,0 +1,59 @@
+{
+  "name": "@wuguishifu/nx-nitro-modules",
+  "version": "0.0.1",
+  "description": "Nx plugin that scaffolds nitro modules with Swift and Kotlin implementations inside an Nx workspace.",
+  "keywords": [
+    "nx",
+    "nx-plugin",
+    "expo",
+    "nitro-modules",
+    "react-native",
+    "native-module",
+    "generator",
+    "swift",
+    "kotlin",
+    "monorepo"
+  ],
+  "license": "MIT",
+  "author": "Bo Bramer <bramer.bo@gmail.com>",
+  "homepage": "https://github.com/wuguishifu/generators/tree/main/tools/nx-nitro-modules#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wuguishifu/generators.git",
+    "directory": "tools/nx-expo-native-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/wuguishifu/generators/issues"
+  },
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "@org/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "generators": "./generators.json",
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@nx/devkit": "^23.1.0"
+  },
+  "devDependencies": {
+    "@root/utils": "workspace:*"
+  },
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo",
+    "generators.json"
+  ]
+}

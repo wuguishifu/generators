@@ -8,6 +8,9 @@
     },
     {
       "path": "./tools/nx-expo-native-modules"
+    },
+    {
+      "path": "./tools/nx-nitro-modules"
     }
   ],
   "compilerOptions": {}
