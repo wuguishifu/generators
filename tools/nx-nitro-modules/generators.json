@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "nitro-module": {
+      "factory": "./dist/generators/nitro-module/nitro-module",
+      "schema": "./dist/generators/nitro-module/schema.json",
+      "description": "Nx plugin that scaffolds nitro modules with Swift and Kotlin implementations inside an Nx workspace."
+    }
+  }
+}
