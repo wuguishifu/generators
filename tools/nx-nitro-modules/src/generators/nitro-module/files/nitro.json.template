@@ -1,12 +1,12 @@
 {
-  "%schema": "https://nitro.margelo.com/nitro.schema.json",
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
   "cxxNamespace": ["<%= cxxName %>"],
   "ios": {
     "iosModuleName": "<%= className %>"
   },
   "android": {
-    "androidNamespace": ["<%= cxxName %>"],
-    "androidCxxLibName": "<%= cxxName %>"
+    "androidNamespace": <%- androidNamespaceJson %>,
+    "androidCxxLibName": "<%= className %>"
   },
   "autolinking": {
     "<%= className %>": {
@@ -20,5 +20,5 @@
       }
     }
   },
-  "ignorePaths": ["**/node_modules"]
+  "ignorePaths": ["**/node_modules", "dist"]
 }

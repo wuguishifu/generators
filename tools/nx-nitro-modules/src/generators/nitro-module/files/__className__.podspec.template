@@ -5,8 +5,9 @@ package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 Pod::Spec.new do |s|
   s.name         = '<%= className %>'
   s.version      = package["version"]
-  s.summary      = '<%= description %>'
+  s.summary      = '<%= summary %>'
   s.description  = '<%= description %>'
+  s.license      = package["license"]
   s.author       = '<%= author %>'
   s.homepage     = '<%= homepage %>'
 
@@ -14,7 +15,7 @@ Pod::Spec.new do |s|
     :ios => min_ios_version_supported,
     :visionos => 1.0
   }
-  s.source       = { :git: '' }
+  s.source       = { :git => '' }
 
   s.source_files = [
     # Implementation (Swift)

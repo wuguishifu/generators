@@ -20,7 +20,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wuguishifu/generators.git",
-    "directory": "tools/nx-expo-native-modules"
+    "directory": "tools/nx-nitro-modules"
   },
   "bugs": {
     "url": "https://github.com/wuguishifu/generators/issues"

@@ -1,6 +1,4 @@
-package <%= androidNamespace %>
-
-import com.margelo.nitro.core.*
+package <%= nitroPackage %>
 
 class <%= className %>: Hybrid<%= className %>Spec() {
   override fun hello(): String {

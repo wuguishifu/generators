@@ -9,11 +9,9 @@ import {
 import {
   getJsonFile,
   initRootBabelConfig,
-  toAndroidNamespace,
   toClassName,
   toCxxNamespace,
   toKebabCase,
-  toNamespacePath,
   versions,
 } from '@root/utils';
 import * as path from 'path';
@@ -27,7 +25,6 @@ export default async function nitroModuleGenerator(
   const projectRoot = options.directory;
   const projectName = path.basename(projectRoot);
   const name = options.name ?? projectName;
-  const androidNamespace = options.androidNamespace ?? 'com.example';
 
   const tasks: GeneratorCallback[] = [];
   tasks.push(addProjectDependencies(tree, options));
@@ -36,6 +33,15 @@ export default async function nitroModuleGenerator(
 
   const kebabName = toKebabCase(name);
   const className = toClassName(name);
+  const cxxName = toCxxNamespace(name);
+
+  // Nitrogen expects autolinked Kotlin implementations (and its own generated
+  // code) to live under `com.margelo.nitro.<ns>`; only the Gradle namespace
+  // (AAR manifest package/BuildConfig) is user-configurable.
+  const nitroNamespaces = [cxxName];
+  const androidNamespace = (
+    options.androidNamespace ?? `com.wuguishifu.${cxxName}`
+  ).toLowerCase();
 
   const baseTsConfig = getJsonFile(tree, 'tsconfig.base.json');
   const customCondition = baseTsConfig.compilerOptions?.customConditions?.[0];
@@ -55,14 +61,22 @@ export default async function nitroModuleGenerator(
     projectName,
     kebabName,
     className,
-    cxxName: toCxxNamespace(name),
+    cxxName,
     importPath: options.importPath ?? name,
     summary: options.summary ?? 'A summary',
     description: options.description ?? 'A description',
-    author: options.author,
+    author: options.author ?? 'unknown',
     homepage: options.homepage ?? 'https://github.com/wuguishifu/generators',
-    androidNamespace: toAndroidNamespace(androidNamespace),
-    androidNamespacePath: toNamespacePath(androidNamespace),
+    androidNamespace,
+    nitroPackage: ['com', 'margelo', 'nitro', ...nitroNamespaces].join('.'),
+    androidNamespacePath: [
+      'java',
+      'com',
+      'margelo',
+      'nitro',
+      ...nitroNamespaces,
+    ].join('/'),
+    androidNamespaceJson: JSON.stringify(nitroNamespaces),
     offsetFromRoot: offsetFromRoot(projectRoot),
     buildable: options.bundler && options.bundler !== 'none',
     emitDeclarationOnly: options.bundler === 'tsc' ? false : true,

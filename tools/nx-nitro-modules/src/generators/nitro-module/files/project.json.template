@@ -1,12 +1,18 @@
 {
   "name": "<%= projectName %>",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "<%= offsetFromRoot %>node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "<%= projectRoot %>/src",
   "projectType": "library",
   "tags": [],
   "targets": {
     "build": {
       "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": [
+        "{projectRoot}/src/specs/**/*",
+        "{projectRoot}/nitro.json"
+      ],
+      "outputs": ["{projectRoot}/nitrogen"],
       "options": {
         "cwd": "<%= projectRoot %>",
         "command": "pnpm nitrogen"

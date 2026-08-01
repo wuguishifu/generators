@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/schema",
   "$id": "NitroModule",
-  "title": "",
+  "title": "Nitro Module Generator",
   "type": "object",
   "properties": {
     "directory": {
@@ -15,7 +15,7 @@
     },
     "name": {
       "type": "string",
-      "description": "The name of the module, as separate words joined by `-`, `_`, or spaces. `Module` is appended to the generated class name.",
+      "description": "The name of the module, as separate words joined by `-`, `_`, or spaces. Used to derive the HybridObject class name.",
       "x-priority": "important"
     },
     "bundler": {
@@ -32,7 +32,7 @@
     },
     "homepage": {
       "type": "string",
-      "description": "The URL of the homepage. For example, `https://docs.expo.dev/modules/.`",
+      "description": "The URL of the homepage, used for the iOS podspec.",
       "x-priority": "important"
     },
     "description": {
@@ -49,7 +49,7 @@
     },
     "androidNamespace": {
       "type": "string",
-      "description": "The namespace in which to put your module on Android. For example, `dev.expo.mynativemodule`."
+      "description": "The Gradle namespace for the Android library (AAR manifest package and BuildConfig), e.g. `com.yourdomain.mymodule`. Defaults to `com.wuguishifu.<module>`. Kotlin classes still live under `com.margelo.nitro.*`, as required by Nitrogen autolinking."
     }
   },
   "required": ["directory"]
