@@ -10,6 +10,7 @@ on:
         default: nx-expo-native-modules
         options:
           - nx-expo-native-modules
+          - nx-convex
       version-bump-type:
         description: Version bump type
         required: false
