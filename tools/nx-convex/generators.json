@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "convex-app": {
+      "factory": "./dist/generators/convex-app/convex-app",
+      "schema": "./dist/generators/convex-app/schema.json",
+      "description": "Generate a convex app and companion contract library."
+    }
+  }
+}

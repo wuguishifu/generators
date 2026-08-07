@@ -1,0 +1,29 @@
+{
+  "name": "<%= importPath %>",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./convex/_generated/api": {
+      "types": "./dist/convex/_generated/api.d.ts",
+      "import": "./dist/convex/_generated/api.js",
+      "default": "./dist/convex/_generated/api.js"
+    },
+    "./convex/_generated/dataModel": {
+      "types": "./dist/convex/_generated/dataModel.d.ts",
+      "default": "./dist/convex/_generated/dataModel.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dependencies": {}
+}
