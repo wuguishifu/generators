@@ -7,8 +7,8 @@ const __dirname = path.dirname(__filename);
 
 const packageRoot = path.resolve(__dirname, '..');
 const workspaceRoot = path.resolve(packageRoot, '../..');
-const <%= appName %>Root = path.join(workspaceRoot, '<%= appDirectory %>');
-const <%= appName %>Dist = path.join(<%= appName %>Root, 'dist');
+const appRoot = path.join(workspaceRoot, '<%= appDirectory %>');
+const appDist = path.join(appRoot, 'dist');
 const outputRoot = path.join(packageRoot, 'dist');
 const outputGeneratedRoot = path.join(outputRoot, 'convex/_generated');
 
@@ -17,7 +17,7 @@ const copyGeneratedFile = async (filename) => {
 
   await rm(destination, { force: true });
   await copyFile(
-    path.join(<%= appName %>Root, 'convex/_generated', filename),
+    path.join(appRoot, 'convex/_generated', filename),
     destination,
   );
 };
@@ -35,7 +35,7 @@ const buildDataModelJs = `export {};
 await rm(outputRoot, { recursive: true, force: true });
 await mkdir(outputGeneratedRoot, { recursive: true });
 
-await cp(path.join(<%= appName %>Dist, 'convex'), path.join(outputRoot, 'convex'), {
+await cp(path.join(appDist, 'convex'), path.join(outputRoot, 'convex'), {
   recursive: true,
 });
 

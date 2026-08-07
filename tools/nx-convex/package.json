@@ -1,7 +1,27 @@
 {
   "name": "@wuguishifu/nx-convex",
   "version": "0.0.1",
-  "private": true,
+  "description": "Nx plugin that scaffolds a Convex backend app with a companion contract library inside an Nx workspace.",
+  "keywords": [
+    "nx",
+    "nx-plugin",
+    "convex",
+    "backend",
+    "generator",
+    "contracts",
+    "monorepo"
+  ],
+  "license": "MIT",
+  "author": "Bo Bramer <bramer.bo@gmail.com>",
+  "homepage": "https://github.com/wuguishifu/generators/tree/main/tools/nx-convex#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wuguishifu/generators.git",
+    "directory": "tools/nx-convex"
+  },
+  "bugs": {
+    "url": "https://github.com/wuguishifu/generators/issues"
+  },
   "type": "commonjs",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -15,12 +35,18 @@
       "default": "./dist/index.js"
     }
   },
+  "generators": "./generators.json",
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
-    "@nx/devkit": "23.1.0",
+    "@nx/devkit": "^23.1.0",
     "tslib": "^2.3.0",
     "zod": "^4.4.3"
   },
-  "generators": "./generators.json",
   "files": [
     "dist",
     "!**/*.tsbuildinfo",

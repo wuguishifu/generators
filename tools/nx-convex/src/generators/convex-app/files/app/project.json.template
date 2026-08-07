@@ -74,14 +74,14 @@
     "deploy": {
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "<%= appName %>",
+        "cwd": "<%= appDirectory %>",
         "command": "convex deploy"
       }
     }<% if (enableAiFiles) { %>,
     "update:ai-files": {
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "apps/hydrogen",
+        "cwd": "<%= appDirectory %>",
         "command": "npx convex ai-files update"
       }
     }<% } %>
