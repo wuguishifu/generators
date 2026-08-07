@@ -1,0 +1,89 @@
+{
+  "name": "<%= appName %>",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "<%= appDirectory %>",
+  "projectType": "application",
+  "// targets": "to see all targets run: nx show project <%= appName %> --web",
+  "targets": {
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "<%= appDirectory %>",
+        "parallel": true,
+        "commands": [
+          "rm -rf ./dist",
+          "rm -rf ./node_modules",
+          "rm -rf ./out-tsc"
+        ]
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          "nx typecheck <%= appName %> --skip-sync --skip-nx-cache",
+          "nx build <%= libName %> --skip-nx-cache"
+        ]
+      }
+    },
+    "build:contracts": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": ["nx build <%= appName %>", "nx build <%= libName %>"]
+      }
+    },
+    "convex": {
+      "executor": "nx:run-commands",
+      "//note": "Example for how to forward commands to the convex CLI: nx convex hydrogen -- dev --help",
+      "options": {
+        "cwd": "<%= appDirectory %>",
+        "forwardAllArgs": true,
+        "command": "convex"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "continuous": true,
+      "options": {
+        "parallel": true,
+        "commands": [
+          {
+            "command": "nx convex <%= appName %> -- dev",
+            "description": "Run Convex dev watcher",
+            "prefix": "<%= appName %>",
+            "prefixColor": "cyan"
+          },
+          {
+            "command": "nx watch-contracts <%= appName %>",
+            "description": "Rebuild <%= libName %> on change",
+            "prefix": "<%= libName %>",
+            "prefixColor": "magenta"
+          }
+        ]
+      }
+    },
+    "watch-contracts": {
+      "executor": "nx:run-commands",
+      "continuous": true,
+      "options": {
+        "command": "nx watch --projects=<%= appName %> --initialRun -- nx build <%= libName %>"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "<%= appName %>",
+        "command": "convex deploy"
+      }
+    }<% if (enableAiFiles) { %>,
+    "update:ai-files": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/hydrogen",
+        "command": "npx convex ai-files update"
+      }
+    }<% } %>
+  }
+}

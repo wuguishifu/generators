@@ -4,15 +4,47 @@
   "title": "",
   "type": "object",
   "properties": {
-    "name": {
+    "appDirectory": {
       "type": "string",
-      "description": "",
+      "description": "The directory in which your Convex app will be created. For example, `apps/convex`",
       "$default": {
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What name would you like to use?"
+      "x-prompt": "Which directory do you want to create your Convex app in?"
+    },
+    "appName": {
+      "type": "string",
+      "description": "The name of your Convex app. Defaults to the basename of your `appDirectory`.",
+      "x-priority": "important"
+    },
+    "contractLibDirectory": {
+      "type": "string",
+      "description": "The directory in which your companion contract library will be created. For example, `apps/convex-kore`",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "Which directory do you want to create your companion contract library in?"
+    },
+    "contractLibName": {
+      "type": "string",
+      "description": "The name of your companion contract library. Defaults to the basename of your `contractLibDirectory`.",
+      "x-priority": "important"
+    },
+    "importPath": {
+      "type": "string",
+      "description": "The library name used to import your Convex api, like `@myorg/convex-kore`. Defaults to your `contractLibName`",
+      "x-priority": "important"
+    },
+    "enableAiFiles": {
+      "type": "boolean",
+      "description": "Enable Convex generated AI files"
+    },
+    "deferConvexSetup": {
+      "type": "boolean",
+      "description": "Skip setting up Convex with an existing or new deployment, and instead use template generated files."
     }
   },
-  "required": ["name"]
+  "required": ["appDirectory", "contractLibDirectory"]
 }

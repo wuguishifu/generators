@@ -27,6 +27,18 @@
           }
         ]
       }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec nx generate @wuguishifu/nx-convex:convex-app --appDirectory=apps/hydrogen --contractLibDirectory=libs/hydrogen-kore --appName=hydrogen --contractLibName=hydrogen-kore --importPath=@hydrogen-kore --no-interactive --enableAiFiles=false --deferConvexSetup=true --dry-run"
+      }
+    },
+    "test:full": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec nx generate @wuguishifu/nx-convex:convex-app --appDirectory=apps/hydrogen --contractLibDirectory=libs/hydrogen-kore --appName=hydrogen --contractLibName=hydrogen-kore --importPath=@hydrogen-kore --no-interactive --enableAiFiles=false --deferConvexSetup=true"
+      }
     }
   }
 }
