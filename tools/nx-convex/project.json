@@ -1,0 +1,32 @@
+{
+  "name": "@wuguishifu/nx-convex",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/nx-convex/src",
+  "projectType": "library",
+  "tags": ["scope:tool"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "tools/nx-convex/dist",
+        "main": "tools/nx-convex/src/index.ts",
+        "tsConfig": "tools/nx-convex/tsconfig.lib.json",
+        "rootDir": "tools/nx-convex/src",
+        "generatePackageJson": false,
+        "assets": [
+          {
+            "input": "./tools/nx-convex/src",
+            "glob": "**/!(*.ts)",
+            "output": "."
+          },
+          {
+            "input": "./tools/nx-convex/src",
+            "glob": "**/*.d.ts",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

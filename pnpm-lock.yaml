@@ -77,6 +77,12 @@ importers:
 
   libs/utils: {}
 
+  tools/nx-convex:
+    dependencies:
+      tslib:
+        specifier: ^2.3.0
+        version: 2.8.1
+
   tools/nx-expo-native-modules:
     dependencies:
       '@nx/devkit':
