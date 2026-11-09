@@ -1,0 +1,52 @@
+# <%= projectName %>
+
+An [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/home.html) app. Each
+stage in `src/config.ts` (<%= stages.map((stage) => `\`${stage.name}\``).join(', ') %>) is a CDK
+`Stage`, so its stacks deploy as `<stage>-<Stack>`.
+
+## Setup
+
+1. Set the AWS account ID for each stage in `src/config.ts`.
+1. Configure AWS credentials, for example with a named profile in
+   `~/.aws/config`.
+1. Bootstrap each account and region once:
+
+   ```sh
+   nx bootstrap <%= projectName %> -- --profile <profile>
+   ```
+
+Lambda functions are bundled locally with esbuild, so Docker isn't needed.
+
+## Commands
+
+Pass AWS CLI options after `--`, e.g. `-- --profile <profile>`, or set
+`AWS_PROFILE`.
+
+| Command                                   | What it does                                                    |
+| ----------------------------------------- | --------------------------------------------------------------- |
+| `nx synth <%= projectName %>`             | Typecheck, then synthesize every stage into `cdk.out`.          |
+| `nx diff <%= projectName %> -c <stage>`   | Show what a deploy of the stage would change.                   |
+| `nx deploy <%= projectName %> -c <stage>` | Deploy every stack in the stage. Defaults to `<%= stages[0].name %>`. |
+| `nx cdk <%= projectName %> -- <args>`     | Run any CDK CLI command, e.g. `-- deploy '<%= stages[0].name %>/Example'`.   |
+
+Non-production deploys skip the approval prompt. Production deploys keep it, so
+the CLI asks before applying changes that widen IAM permissions or security
+group rules.
+
+## Adding a stack
+
+```sh
+nx g @wuguishifu/nx-aws-cdk:stack <name> --project=<%= projectName %>
+```
+
+This creates `src/stacks/<name>/` and adds the stack to `src/app-stage.ts`.
+Write Lambda functions with `NodeFunction` from `src/constructs/node-function.ts`
+to get the shared defaults: Node.js 24 on arm64, JSON logs, a log group with a
+retention period, and source maps.
+
+## Secrets
+
+Don't put secrets in Lambda environment variables. They're visible in the
+synthesized template and the Lambda console. Store them in Secrets Manager,
+grant the function read access (`secret.grantRead(fn)`), and pass only the
+secret's name or ARN in the environment.

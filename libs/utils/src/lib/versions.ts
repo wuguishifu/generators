@@ -17,6 +17,14 @@ export const reactNativeVersion = '0.85.3';
 export const metroVersion = '~0.84.3';
 export const typescriptVersion = '^6.0.3';
 
+// aws cdk
+export const awsCdkLibVersion = '^2.275.0';
+export const awsCdkCliVersion = '^2.1148.0'; // aws-cdk (the CLI, versioned separately since 2.1000)
+export const constructsVersion = '^10.0.0';
+export const tsxVersion = '^4.23.15';
+export const esbuildVersion = '^0.28.0'; // lets NodejsFunction bundle locally instead of in Docker
+export const typesAwsLambdaVersion = '^8.10.164';
+
 export const versions = {
   nxVersion,
   typesNodeVersion,
@@ -34,4 +42,10 @@ export const versions = {
   reactNativeVersion,
   metroVersion,
   typescriptVersion,
+  awsCdkLibVersion,
+  awsCdkCliVersion,
+  constructsVersion,
+  tsxVersion,
+  esbuildVersion,
+  typesAwsLambdaVersion,
 };

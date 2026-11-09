@@ -1,6 +1,6 @@
 # generators
 
-A series of [Nx](https://nx.dev) generators for Expo native code.
+A series of [Nx](https://nx.dev) generators.
 
 This is the monorepo the generators are developed in. If you just want to use
 them, install the published plugin — see the package README linked below.
@@ -10,6 +10,8 @@ them, install the published plugin — see the package README linked below.
 | Package                                                                        | Description                                                                        |
 | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
 | [`@wuguishifu/nx-expo-native-modules`](tools/nx-expo-native-modules/README.md) | Nx plugin that scaffolds Expo native modules with Swift and Kotlin implementations |
+| [`@wuguishifu/nx-convex`](tools/nx-convex/README.md)                           | Nx plugin that scaffolds a Convex backend app with a companion contract library    |
+| [`@wuguishifu/nx-aws-cdk`](tools/nx-aws-cdk/README.md)                         | Nx plugin that scaffolds AWS CDK apps and stacks                                   |
 
 Internal, unpublished libraries live in `libs/` — currently `@root/utils`, which
 holds the version constants the generators write into generated projects. It is

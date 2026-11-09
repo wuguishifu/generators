@@ -1,0 +1,11 @@
+import type { Handler } from 'aws-lambda';
+
+// Each export is a Lambda handler, wired up in <%= fileName %>-stack.ts.
+//
+// Avoid logging whole events: API Gateway events carry auth headers and
+// request bodies. Lambda writes these logs as JSON, so log objects rather
+// than strings to keep them searchable.
+export const hello: Handler<unknown, { message: string }> = async () => {
+  console.log({ message: 'hello invoked', stage: process.env.STAGE });
+  return { message: `Hello from ${process.env.STAGE}` };
+};

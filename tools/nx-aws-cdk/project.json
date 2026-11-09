@@ -1,0 +1,52 @@
+{
+  "name": "@wuguishifu/nx-aws-cdk",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/nx-aws-cdk/src",
+  "projectType": "library",
+  "tags": ["scope:tool"],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^build"],
+      "options": {
+        "outputPath": "tools/nx-aws-cdk/dist",
+        "main": "tools/nx-aws-cdk/src/index.ts",
+        "additionalEntryPoints": [
+          "tools/nx-aws-cdk/src/generators/cdk-app/cdk-app.ts",
+          "tools/nx-aws-cdk/src/generators/stack/stack.ts"
+        ],
+        "tsConfig": "tools/nx-aws-cdk/tsconfig.lib.json",
+        "platform": "node",
+        "format": ["cjs"],
+        "bundle": true,
+        "excludeFromExternal": ["@root/utils"],
+        "declaration": true,
+        "declarationRootDir": "tools/nx-aws-cdk/src",
+        "generatePackageJson": false,
+        "esbuildOptions": {
+          "outExtension": { ".js": ".js" },
+          "conditions": ["@org/source"]
+        },
+        "assets": [
+          {
+            "input": "./tools/nx-aws-cdk/src",
+            "glob": "**/!(*.ts)",
+            "output": "."
+          },
+          {
+            "input": "./tools/nx-aws-cdk/src",
+            "glob": "**/*.d.ts",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec nx generate @wuguishifu/nx-aws-cdk:cdk-app apps/condor --no-interactive --dry-run"
+      }
+    }
+  }
+}

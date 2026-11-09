@@ -1,0 +1,14 @@
+{
+  "generators": {
+    "cdk-app": {
+      "factory": "./dist/generators/cdk-app/cdk-app",
+      "schema": "./dist/generators/cdk-app/schema.json",
+      "description": "Generate an AWS CDK app with one stage per environment."
+    },
+    "stack": {
+      "factory": "./dist/generators/stack/stack",
+      "schema": "./dist/generators/stack/schema.json",
+      "description": "Add a stack to an existing AWS CDK app."
+    }
+  }
+}

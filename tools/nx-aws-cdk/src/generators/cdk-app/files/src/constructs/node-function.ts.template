@@ -1,0 +1,56 @@
+import * as cdk from 'aws-cdk-lib';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as nodejs from 'aws-cdk-lib/aws-lambda-nodejs';
+import * as logs from 'aws-cdk-lib/aws-logs';
+import type { Construct } from 'constructs';
+
+import type { StageConfig } from '../config';
+
+export interface NodeFunctionProps extends nodejs.NodejsFunctionProps {
+  readonly config: StageConfig;
+}
+
+/**
+ * A `NodejsFunction` with defaults set in one place. Anything passed in props
+ * overrides them.
+ */
+export class NodeFunction extends nodejs.NodejsFunction {
+  constructor(
+    scope: Construct,
+    id: string,
+    { config, ...props }: NodeFunctionProps,
+  ) {
+    super(scope, id, {
+      runtime: lambda.Runtime.NODEJS_24_X,
+      architecture: lambda.Architecture.ARM_64,
+      memorySize: 256,
+      timeout: cdk.Duration.seconds(10),
+      loggingFormat: lambda.LoggingFormat.JSON,
+      // Without an explicit log group, Lambda creates one that never expires
+      // and is left behind when the function is deleted.
+      logGroup:
+        props.logGroup ??
+        new logs.LogGroup(scope, `${id}Logs`, {
+          retention: config.isProduction
+            ? logs.RetentionDays.SIX_MONTHS
+            : logs.RetentionDays.ONE_MONTH,
+          removalPolicy: config.isProduction
+            ? cdk.RemovalPolicy.RETAIN
+            : cdk.RemovalPolicy.DESTROY,
+        }),
+      ...props,
+      environment: {
+        NODE_OPTIONS: '--enable-source-maps',
+        STAGE: config.name,
+        ...props.environment,
+      },
+      bundling: {
+        minify: true,
+        sourceMap: true,<% if (customCondition) { %>
+        // Resolve workspace libraries to their source, like the CDK app does.
+        esbuildArgs: { '--conditions': '<%= customCondition %>' },<% } %>
+        ...props.bundling,
+      },
+    });
+  }
+}

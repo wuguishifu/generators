@@ -1,0 +1,27 @@
+import type { Environment } from 'aws-cdk-lib';
+
+export interface StageConfig {
+  /**
+   * The CDK stage id. Stacks deploy as `<name>-<StackId>`, so every stage can
+   * live side by side in one account.
+   */
+  readonly name: string;
+  /** Production stages retain data and logs when a resource is removed. */
+  readonly isProduction: boolean;
+  /**
+   * Where the stage deploys. Set `account` so that deploying with credentials
+   * for the wrong account fails instead of quietly deploying there.
+   */
+  readonly env: Environment;
+}
+
+export const stages: StageConfig[] = [<% stages.forEach((stage) => { %>
+  {
+    name: '<%= stage.name %>',
+    isProduction: <%= stage.isProduction %>,
+    env: {
+      // account: '123456789012',
+      region: '<%= region %>',
+    },
+  },<% }); %>
+];

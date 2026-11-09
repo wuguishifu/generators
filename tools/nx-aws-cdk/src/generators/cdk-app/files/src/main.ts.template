@@ -1,0 +1,12 @@
+import * as cdk from 'aws-cdk-lib';
+
+import { AppStage } from './app-stage';
+import { stages } from './config';
+
+const app = new cdk.App();
+
+// Every stage is synthesized on each run, which keeps them identical except for
+// their config. Deploy one with `cdk deploy '<stage>/*'`.
+for (const config of stages) {
+  new AppStage(app, config.name, { config, env: config.env });
+}

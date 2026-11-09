@@ -81,6 +81,22 @@ importers:
 
   libs/utils: {}
 
+  tools/nx-aws-cdk:
+    dependencies:
+      '@nx/devkit':
+        specifier: ^23.1.0
+        version: 23.1.0(nx@23.1.0(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.18))(@swc/types@0.1.27)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.18)))
+      typescript:
+        specifier: '>=5.0.0'
+        version: 6.0.3
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@root/utils':
+        specifier: workspace:*
+        version: link:../../libs/utils
+
   tools/nx-convex:
     dependencies:
       '@nx/devkit':

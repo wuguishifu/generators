@@ -11,6 +11,9 @@
     },
     {
       "path": "./tools/nx-convex"
+    },
+    {
+      "path": "./tools/nx-aws-cdk"
     }
   ],
   "compilerOptions": {}

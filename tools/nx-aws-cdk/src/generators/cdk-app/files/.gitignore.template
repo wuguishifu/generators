@@ -1,0 +1,6 @@
+# CDK synth output and asset staging
+cdk.out
+.cdk.staging
+
+dist
+out-tsc

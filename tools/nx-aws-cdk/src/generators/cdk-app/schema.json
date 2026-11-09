@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "CdkApp",
+  "title": "Create an AWS CDK app",
+  "description": "Scaffold an AWS CDK app that synthesizes one CDK Stage per environment, with a Lambda construct that has production-ready defaults and an example stack.",
+  "type": "object",
+  "properties": {
+    "directory": {
+      "type": "string",
+      "description": "The directory the CDK app is created in, e.g. `apps/infra`.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Which directory do you want to create the CDK app in?"
+    },
+    "name": {
+      "type": "string",
+      "description": "The Nx project name. Defaults to the last segment of `directory`.",
+      "x-priority": "important"
+    },
+    "stages": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "The environments to deploy to. Each becomes a CDK Stage whose stacks are named `<stage>-<Stack>`. A stage named `production` or `prod` retains data and logs on delete.",
+      "default": ["staging", "production"],
+      "x-priority": "important"
+    },
+    "region": {
+      "type": "string",
+      "description": "The AWS region every stage deploys to. Change individual stages afterwards in `src/config.ts`.",
+      "default": "us-east-1"
+    },
+    "exampleStack": {
+      "type": "string",
+      "description": "The name of an example stack to generate, with one Lambda function. Pass an empty string to skip it.",
+      "default": "example"
+    }
+  },
+  "required": ["directory"]
+}
